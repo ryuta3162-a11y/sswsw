@@ -27,17 +27,15 @@
             --color-text: #2C2C2C;
             --bg-body: #FAF9F6; 
             
-            --font-base: 'Noto Sans JP', sans-serif;
-            --font-en: 'Playfair Display', serif;
-            
             --container-max-width: 600px;
         }
 
         html { box-sizing: border-box; scroll-behavior: smooth; }
         *, *::before, *::after { box-sizing: inherit; }
         
+        /* フォントの完全統一 (Noto Sans JPを強制) */
         body {
-            font-family: var(--font-base);
+            font-family: 'Noto Sans JP', sans-serif !important;
             text-align: center;
             margin: 0; padding: 0; padding-bottom: 120px;
             overflow-x: hidden; 
@@ -46,11 +44,14 @@
         }
         body.banner-hidden { padding-bottom: 40px; }
 
+        /* 英数字用インパクトフォント */
+        .font-impact { 
+            font-family: 'Oswald', sans-serif !important; 
+        }
+
         /* =======================================================
            ■ Hero Section (Slot Animation)
            ======================================================= */
-        .font-impact { font-family: 'Oswald', sans-serif; }
-        
         .mild-fade-in { opacity: 0; animation: mildFadeIn 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
         @keyframes mildFadeIn {
             0% { opacity: 0; transform: translateY(20px); }
@@ -98,7 +99,6 @@
         
         .plan-selection-section { width: 100%; margin: 0 auto; }
         
-        /* キャンペーン見出しをゴールドグラデーション化 */
         .campaign-header-enhanced { 
             background: var(--gold-gradient); 
             padding: 25px 20px; 
@@ -111,7 +111,7 @@
         .campaign-header-enhanced h2 { margin: 0; font-size: 1.8rem; font-weight: 900; color: #111; letter-spacing: 0.05em; text-shadow: 0 1px 0 rgba(255,255,255,0.4); }
         .campaign-header-enhanced .sub-text { display: block; font-size: 1rem; color: #333; margin-top: 5px; font-weight: 700; opacity: 0.9; }
 
-        .plan-container-wrapper { overflow: hidden; border-radius: 0 0 20px 20px; background-color: #fff; box-shadow: 0 15px 40px rgba(0,0,0,0.08); padding-top: 15px; padding-bottom: 30px; border: 4px solid var(--brand); border-top: none; }
+        .plan-container-wrapper { overflow: hidden; border-radius: 0 0 20px 20px; background-color: #fff; box-shadow: 0 15px 40px rgba(0,0,0,0.08); padding-top: 15px; padding-bottom: 30px; border: 4px solid var(--gold-main); border-top: none; }
         .price-showcase { border-radius: 12px; max-width: 95%; margin: 0 auto; text-align: left; border: 1px solid #eee; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
         .price-list { padding: 0 1rem; }
         .price-item { display: flex; align-items: flex-start; padding: 1rem 0; border-bottom: 1px dashed #ccc; gap: 0.5rem; }
@@ -143,10 +143,63 @@
         .btn-gold-flat { background: var(--gold-gradient); color: #3e2723; border: 1px solid #d4af37; }
         .btn-red-flat { background: var(--brand); color: #fff; border: 1px solid #a01229; }
 
+        /* =======================================================
+           ■ オプションセクション (デザイン改善)
+           ======================================================= */
         .options-group-section { background: linear-gradient(145deg, #C21632 0%, #8a0e20 100%); color: #fff; border-radius: 20px; padding: 50px 0; margin: 50px auto; width: 100%; }
         .options-carousel-section { padding-bottom: 20px; }
-        .options-carousel-section .section-title { font-size: 1.8rem; font-weight: 900; margin-bottom: 0.8rem; }
-        .options-carousel-section .section-title .highlight { color: var(--gold-main); font-size: 2.8rem; }
+        
+        /* 見出し用の高級感プレートデザイン */
+        .options-carousel-section .text-box {
+            margin: 0 auto 2rem auto;
+            max-width: 90%;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.25); /* 文字が埋もれないように暗めの半透明背景 */
+            border: 1px solid rgba(212, 175, 55, 0.5); /* ゴールドの枠線 */
+            border-radius: 12px;
+            padding: 20px 15px;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.2), 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .options-carousel-section .section-title { 
+            font-size: 1.7rem; 
+            font-weight: 900; 
+            margin-bottom: 1rem; 
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+        /* ゴールドの下線 */
+        .options-carousel-section .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 3px;
+            background: var(--gold-gradient);
+            border-radius: 2px;
+        }
+        .options-carousel-section .section-title .highlight { 
+            color: var(--gold-light); 
+            font-size: 3rem; 
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* 立体感 */
+            margin-right: 4px;
+        }
+        .options-carousel-section .text-box p {
+            font-size: 0.95rem; 
+            line-height: 1.6; 
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            margin: 0;
+        }
+        .options-carousel-section .text-box .highlight-text {
+            color: var(--gold-light);
+            font-size: 1.3rem;
+            font-weight: 900;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
         .scene { width: 100%; height: 450px; display: flex; justify-content: center; align-items: center; position: relative; overflow: hidden; }
         .card-carousel { width: 280px; height: 340px; position: relative; cursor: grab; }
         .option-card-3d { position: absolute; width: 280px; height: 340px; border-radius: 20px; background-color: #fff; border: 4px solid var(--gold-main); display: flex; flex-direction: column; padding: 1.5rem 1rem; left: 50%; top: 0; transform: translateX(-50%); transition: 0.5s; }
@@ -156,9 +209,19 @@
         .card-badge { position: absolute; top: 1rem; left: 1rem; padding: 0.4rem 0.8rem; font-weight: 900; font-size: 0.8rem; border-radius: 6px; }
         .card-badge.free { background: var(--brand); color: #fff; }
         .card-badge.paid { background: var(--gold-main); color: #fff; }
+        
         .carousel-nav { display: flex; justify-content: center; gap: 1.5rem; margin-top: 20px; }
-        .carousel-nav button { width: 55px; height: 55px; border-radius: 50%; background: #fff; border: none; box-shadow: 0 5px 15px rgba(0,0,0,0.4); font-size: 1.2rem; cursor: pointer; transition: 0.2s; }
-        .carousel-nav button:hover { transform: scale(1.1); }
+        .carousel-nav button { 
+            width: 55px; height: 55px; border-radius: 50%; 
+            background: var(--gold-gradient); 
+            border: 2px solid #fff; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4); 
+            color: #1a1a2e;
+            font-size: 1.5rem; 
+            display: flex; justify-content: center; align-items: center;
+            cursor: pointer; transition: 0.2s; 
+        }
+        .carousel-nav button:hover { transform: scale(1.1); box-shadow: 0 8px 20px rgba(0,0,0,0.6); }
 
         .notice-container-v22 { background: #fff; border: 4px solid var(--brand); border-radius: 20px; padding: 40px 25px; margin: 60px auto 0; width: 95%; text-align: center; }
         .notice-title-v22 { font-size: 2rem; font-weight: 900; color: var(--brand); margin-bottom: 25px; display: flex; align-items: center; justify-content: center; }
@@ -200,7 +263,7 @@
         <!-- 全体を囲むメインフレーム -->
         <div class="bg-white border-4 border-[#111] p-6 md:p-10 shadow-[10px_10px_0_var(--gold-main)] md:shadow-[15px_15px_0_var(--gold-main)] relative mild-fade-in w-full">
             
-            <!-- ラベル (ブラックからゴールド背景/ブラックテキストに変更) -->
+            <!-- ラベル -->
             <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 inline-block bg-gradient-to-r from-[var(--gold-dark)] via-[var(--gold-light)] to-[var(--gold-main)] text-[#111] font-black px-6 py-2 text-sm md:text-lg tracking-widest whitespace-nowrap border-4 border-[#111] shadow-[4px_4px_0_var(--brand)] md:shadow-[6px_6px_0_var(--brand)]">
                 3月～8月分月会費
             </div>
@@ -216,7 +279,8 @@
                 <div class="flex flex-wrap items-center justify-center gap-2 md:gap-4 text-gray-500 font-bold text-sm md:text-xl mb-2">
                     <span class="bg-[#111] text-white px-2 py-1 text-xs md:text-sm">通常</span>
                     <div class="relative inline-block">
-                        <span class="font-impact text-2xl md:text-3xl">8,500<span class="text-sm md:text-lg ml-1 font-sans">円</span></span>
+                        <!-- font-sansを削除し、統一したフォントが当たるように -->
+                        <span class="font-impact text-2xl md:text-3xl">8,500<span class="text-sm md:text-lg ml-1">円</span></span>
                         <div id="strike-line" class="absolute top-1/2 -left-2 w-[110%] h-1 bg-[var(--brand)] transform rotate-1 scale-x-0 origin-left transition-transform duration-300"></div>
                     </div>
                     <span class="text-xs md:text-sm">(税込9,350円)</span>
@@ -227,17 +291,6 @@
 
                 <!-- スロットラッパー (高さを厳密に制御) -->
                 <div id="slot-wrapper" class="relative overflow-hidden w-full h-[120px] md:h-[160px]">
-                    <!-- プレースホルダー (基準となる高さ) -->
-                    <div class="opacity-0 pointer-events-none select-none slot-frame flex flex-col items-center justify-center py-2">
-                        <div class="flex items-baseline justify-center text-[#111]">
-                            <span class="font-impact text-6xl md:text-[8rem] tracking-tighter leading-none">4,250</span>
-                            <span class="text-2xl md:text-4xl font-black ml-1 md:ml-2 mb-1 leading-none">円</span>
-                        </div>
-                        <div class="text-[#111] font-bold text-sm md:text-xl tracking-widest mt-1 leading-none">
-                            (税込4,675円)
-                        </div>
-                    </div>
-
                     <!-- 実際に回転するフィルム（リボン） -->
                     <div id="slot-ribbon" class="absolute top-0 left-0 w-full flex flex-col will-change-transform"></div>
                 </div>
@@ -247,19 +300,17 @@
 </section>
 
 <!-- ==========================================
-     メインコンテンツ (ゴールドヘッダー統合版)
+     メインコンテンツ
      ========================================== -->
 <div class="lp-wrapper">
 
     <!-- プラン詳細セクション -->
     <section class="plan-selection-section reveal-up py-4">
-        <!-- ヘッダーをゴールドグラデーションに更新 -->
         <div class="campaign-header-enhanced">
             <h2>3月限定キャンペーン</h2>
             <span class="sub-text">APP入会限定の特別プラン！</span>
         </div>
 
-        <!-- 枠のデザインをブランドレッドで統一し、ゴールドと対比 -->
         <div class="plan-container-wrapper">
             <div class="price-showcase">
                 <div class="price-list">
@@ -271,7 +322,7 @@
                         </div>
                         <div class="divider-dot"></div>
                         <div class="price-display-center">
-                            <span class="price-value">5,500<span class="unit">円(税込)</span></span>
+                            <span class="price-value font-impact text-2xl">5,500<span class="unit" style="font-family: 'Noto Sans JP', sans-serif;">円(税込)</span></span>
                         </div>
                     </div>
 
@@ -283,7 +334,7 @@
                         </div>
                         <div class="divider-dot"></div>
                         <div class="price-display-center">
-                            <span class="price-value" style="color: var(--brand);">4,675<span class="unit">円(税込) /月</span></span>
+                            <span class="price-value font-impact text-3xl" style="color: var(--brand);">4,675<span class="unit" style="font-family: 'Noto Sans JP', sans-serif;">円(税込) /月</span></span>
                             <span style="font-size: 0.75rem; color: #666;">通常9,350円から半額</span>
                         </div>
                     </div>
@@ -296,7 +347,7 @@
                         </div>
                         <div class="divider-dot"></div>
                         <div class="price-display-center">
-                            <span class="price-value zero-yen" style="color: var(--brand); font-size: 1.6rem;">0<span class="unit">円</span></span>
+                            <span class="price-value zero-yen font-impact text-3xl" style="color: var(--brand);">0<span class="unit" style="font-family: 'Noto Sans JP', sans-serif;">円</span></span>
                             <span style="font-size: 0.8rem; font-weight: 700; color: var(--brand); background: #fff0f0; padding: 2px 6px; border-radius: 4px; margin-top: 2px;">(対象のオプションが無料)</span>
                         </div>
                     </div>
@@ -304,7 +355,7 @@
                     <!-- 入会時お支払い目安 -->
                     <div class="mid-list-total-block">
                         <div class="label"><i class="ph-bold ph-wallet"></i> ご入会時お支払い合計</div>
-                        <div><span class="price-large">10,175</span><span class="unit-large">円(税込)</span></div>
+                        <div><span class="price-large font-impact text-4xl">10,175</span><span class="unit-large font-bold">円(税込)</span></div>
                         <div style="font-size: 0.8rem; color: #666; margin-top: 4px;">(初期費用5,500円 ＋ 3月分会費4,675円)</div>
                     </div>
                 </div>
@@ -312,7 +363,7 @@
                  <!-- 9月以降 -->
                 <div class="monthly-fee">
                     <div style="font-size: 0.85rem; font-weight: 700; color: #666; margin-bottom: 0.5rem;">**9月以降の通常月額**</div>
-                    <div><span class="price-large" style="font-size: 1.6rem; font-weight: 900;">9,350<span class="unit-large">円(税込)</span></span><span style="margin: 0 10px; font-weight: 900;">+</span><span style="font-weight: 700;">オプション料金</span></div>
+                    <div><span class="price-large font-impact text-3xl" style="font-weight: 900;">9,350<span class="unit-large" style="font-family: 'Noto Sans JP', sans-serif; font-size: 1.1rem;">円(税込)</span></span><span class="font-impact text-2xl" style="margin: 0 10px;">+</span><span style="font-weight: 700;">オプション料金</span></div>
                 </div>
             </div>
 
@@ -368,13 +419,16 @@
 
     <!-- オプションカルーセルセクション -->
     <section class="options-group-section reveal-up" id="options-group-section">
+        
+        <!-- 無料オプション -->
         <section class="options-carousel-section">
-            <div class="text-box" style="margin: 0 auto; max-width: 90%; text-align: center;">
+            <div class="text-box">
                 <h2 class="section-title">
-                    <span class="highlight">8</span>つの無料オプション
+                    <span class="highlight font-impact">8</span>つの無料オプション
                 </h2>
-                <p style="font-size: 0.95rem; line-height: 1.6; font-weight: 700;">
-                    キャンペーン期間中<br><span style="color: var(--gold-main); font-size: 1.3rem;">3月分が0円</span>で使い放題！<br><span style="font-size: 0.85rem; opacity: 0.9;">※8つのオプションは入会時自動契約されます。</span>
+                <p>
+                    キャンペーン期間中<br><span class="highlight-text">3月分が0円</span>で使い放題！<br>
+                    <span style="font-size: 0.85rem; opacity: 0.9; display: inline-block; margin-top: 8px;">※8つのオプションは入会時自動契約されます。</span>
                 </p>
             </div>
             <div class="scene">
@@ -388,11 +442,11 @@
 
         <!-- 有料オプション -->
         <section class="options-carousel-section" style="margin-top: 70px;">
-            <div class="text-box" style="margin: 0 auto; max-width: 90%; text-align: center;">
+            <div class="text-box">
                 <h2 class="section-title">
-                    <span class="highlight">3</span>つの有料オプション
+                    <span class="highlight font-impact">3</span>つの有料オプション
                 </h2>
-                <p style="font-size: 0.95rem; font-weight: 700;">
+                <p style="margin-top: 10px;">
                     ※こちらはご希望の方のみ契約いただけます
                 </p>
             </div>
@@ -525,13 +579,15 @@ document.addEventListener('DOMContentLoaded', function() {
         
         framesData.push({ main: "4,250", sub: "4,675" }); // 最後のターゲットコマ
 
+        const wrapperHeight = wrapper.offsetHeight;
+
         let html = '';
         framesData.forEach((f, idx) => {
             const isTarget = (idx === framesData.length - 1);
             const opacityClass = (idx === 0 || isTarget) ? "opacity-100" : "opacity-60";
             
             html += `
-                <div class="slot-frame flex flex-col items-center justify-center w-full h-full ${opacityClass}">
+                <div class="slot-frame flex flex-col items-center justify-center w-full ${opacityClass}" style="height: ${wrapperHeight}px;">
                     <div class="flex items-baseline justify-center text-[#111]">
                         <span class="font-impact text-6xl md:text-[8rem] tracking-tighter slot-shadow leading-none">${f.main}</span>
                         <span class="text-2xl md:text-4xl font-black ml-1 md:ml-2 mb-1 leading-none">円</span>
@@ -615,7 +671,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
                 <div style="width: 100%; flex-shrink: 0;">
                     <h4 class="card-title">${option.name}</h4>
-                    <p class="card-price">${option.price.split(' ')[1]}<span style="font-size: 0.8rem; font-weight: normal; color: #555;"> / ${option.price.split(' ')[0]}(税込)</span></p>
+                    <p class="card-price font-impact text-2xl" style="color: var(--brand);">${option.price.split(' ')[1]}<span style="font-size: 0.8rem; font-weight: normal; color: #555; font-family: 'Noto Sans JP', sans-serif;"> / ${option.price.split(' ')[0]}(税込)</span></p>
                     <p style="font-size: 0.8rem; color: #666; margin-top: 0.75rem; line-height: 1.5; min-height: 3.6rem;">${option.description}</p>
                 </div>
             </div>`;
